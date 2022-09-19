@@ -1,0 +1,5 @@
+json/*.json
+txtfiles/*.txt
+node_modules
+.env
+*.bat

@@ -1,0 +1,87 @@
+$backgroundColor : #E5E0DB;
+$headercolor : rgb(219, 138, 138);
+$maincolor:  rgb(138, 200, 219);
+$footercolor :  rgb(203, 138, 219);
+$datacolor : #ffff;
+$headerheight: 10%;
+$txtboxheight: 200px;
+// $formmargin: 1%;
+$formmargin: 1% 0 1% 0;
+$buttonsize : 1.2rem;
+$borde : 25px;
+$padd : 10px;
+$imagen: 126px;
+$subcont : 0px 10px 0px 10px;
+
+body{
+    background-color: $backgroundColor;
+}
+
+.margen {
+    margin: $formmargin;
+}
+
+h2,h1 {
+    margin: 0;
+}
+
+.txtbox {
+    resize: none; 
+    height: $txtboxheight;
+}
+
+header {
+    // background-color:$headercolor;
+    height: $headerheight;
+   h2{
+        padding: 2vh;
+     }
+
+}
+.inicio {
+    display: flex;
+    align-items: center;
+    justify-content: center;;
+    nav{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        
+    }
+}
+main{
+    background-color:$maincolor;
+    padding: 1%;
+ 
+}
+.gran{
+    font-size: $buttonsize;
+}
+.contenedor {
+    margin: 0 5vh 0 5vh ;
+    height: 100vh;
+}
+
+footer {
+    background-color:$footercolor;
+    padding: 1%;
+}
+
+.dataconteiner {
+    display: flex;
+    align-items: center;
+    background-color: $datacolor;
+    padding: $padd;
+    border-radius: $borde;
+    margin-bottom: $padd;
+    img{
+        height: $imagen;
+        border-radius: $borde;
+    }
+    h1{
+        font-size: 1.7rem;
+    }
+}
+.subcontainer {
+    padding: $subcont;
+}

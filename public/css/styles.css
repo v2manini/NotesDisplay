@@ -1,0 +1,22 @@
+.contenedor {
+    margin: 0 5vh 0 5vh ;
+    height: 100vh;
+}
+header {
+    background-color: rgb(219, 138, 138);
+   /* height: 75px;*/
+}
+
+h2,h1 {
+    margin: 0;
+    /*padding: 2vh;*/
+}
+main{
+    background-color: rgb(138, 200, 219);
+    padding: 1%;
+}
+
+footer {
+    background-color: rgb(203, 138, 219);
+    padding: 1%;
+}
