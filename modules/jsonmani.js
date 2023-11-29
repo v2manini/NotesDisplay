@@ -10,7 +10,16 @@ function writejson(data,name) {
         }
     })
 }
-
+function overwritejson(data,name) {
+    data = JSON.stringify(data);
+    fs.writeFile(`./json/${name}`,data, function(err){
+        if (err) {
+            console.log(err);
+        } else{
+            console.log("El archivo ha sido Sobreescrito");
+        }
+    })
+}
 
 function readjson(filepath,cb) {
     fs.readFile(filepath, "utf8",function(err,fileData){
@@ -26,4 +35,4 @@ function readjson(filepath,cb) {
     
 }
 
-module.exports = {writejson,readjson}
+module.exports = {writejson,readjson,overwritejson}

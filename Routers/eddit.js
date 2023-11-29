@@ -38,7 +38,7 @@ router.get('/edit/json/:jsonname/:id', async function (req, res) {
                 Subtipo : data[req.params.id].Subtipo,
                 limag : data[req.params.id].limag,
                 pimag : data[req.params.id].pimag,
-                jsonName : fileJson
+                jsonName : req.params.jsonname
             };
         
             res.render("edit",objaux);
@@ -49,10 +49,8 @@ router.get('/edit/json/:jsonname/:id', async function (req, res) {
 
 
 router.post('/edit/update', async function (req, res) {
-    if (req.body.jsonName.length > 10) {
-        console.log("req.body.jsonName ",req.body.jsonName);
-
-
+    if (req.body.jsonName.length > 2) {
+        updateJson(req);
     } else {
         await Mysql.Realizar_Query(`update NotesUrl set url = "${req.body.url}",nombre = "${req.body.nombre}",descrip = "${req.body.descrip}",
         tipo = "${req.body.tipo}",Subtipo = "${req.body.subtipo}",limag = "${req.body.limag}" ,pimag = "${req.body.pimag}"
@@ -60,5 +58,32 @@ router.post('/edit/update', async function (req, res) {
     }
     res.redirect("/view");
 });
+
+
+function updateJson(req) { // actualizo el archivo
+    let fileJson = path.join(__dirname,"..","json",req.body.jsonName);
+
+    jsonman.readjson(fileJson, function(err,data){
+            if(err) return console.error(err);
+            data = JSON.parse(data);
+
+            swapJsondata(req.body.id,data,req.body); // cambio los valores           
+            jsonman.overwritejson(data,req.body.jsonName); 
+    });
+};
+
+function swapJsondata(id,data,newdata) {
+    // console.log("id = ",id)
+    // console.log("Url = ",olddata[id].url)
+    // console.log("newdata = ",newdata)
+
+    data[id].url = newdata.url;
+    data[id].nombre = newdata.nombre;
+    data[id].descrip = newdata.descrip;
+    data[id].tipo = newdata.tipo;
+    data[id].subtipo = newdata.subtipo;
+    data[id].limag = newdata.limag;
+    data[id].pimag = newdata.pimag;
+};
 
 module.exports = router;

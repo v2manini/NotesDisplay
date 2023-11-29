@@ -16,7 +16,7 @@
 + [✅] Pasar los metadatos al json .
 + [✅] Mostrar los Json.
 + [📦] Agregar una base de datos.
-+ [📦] Poder editar los Json.
++ [✅] Poder editar los Json.
 + [📦] Poder agregar más datos a algun Json(Dinamicamente).
 
 
