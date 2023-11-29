@@ -1,6 +1,14 @@
 <div id="IdErrorAlert"></div>
 
 <form action="/add" method="post" id="IdAddForm" >
+      <div class="form-group margen">
+          <label for="Artículo" for="formfile">Tipo de Guardado</label>
+          <select name="Selec" id="Idselectipo" class="form-select" name = "selctipo"aria-label="Default select example">
+            <option value="json">Json</option>
+            <option value="data-base">Data Base</option>
+            {{!-- <option value="data-base-local">Data Base Local</option> --}}
+          </select>
+      </div> 
       <div class="form-group">
         <label class="form-label mt-4">Nombre del Json</label>
         <input type="text" class="form-control" id="idnombdato" name="nombre" placeholder="Ingresar el nombre">

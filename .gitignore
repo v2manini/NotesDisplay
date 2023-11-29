@@ -2,4 +2,7 @@ json/*.json
 txtfiles/*.txt
 node_modules
 .env
+*.URL
+*ps1
 *.bat
+*.db

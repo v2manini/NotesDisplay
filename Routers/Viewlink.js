@@ -9,7 +9,7 @@ router.post('/getjson', async function (req, res) {
     let folder = path.join(__dirname,"..","json");
     
     fs.readdirSync(folder).forEach(function (file) {
-        data.push(file);
+        if (file.endsWith("json")) data.push(file);
     });
 
     res.send(data);

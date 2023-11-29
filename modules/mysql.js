@@ -12,7 +12,7 @@ var SQL_Config_Data =
 	password: process.env.MYSQL_PW,
 	database: process.env.MYSQL_DB, 
 	port: process.env.PORT_DB,
-	charset: 'UTF8_GENERAL_CI'
+	charset: 'utf8mb4'
 }
 
 async function Realizar_Query(query){

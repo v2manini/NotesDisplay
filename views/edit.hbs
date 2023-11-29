@@ -1,0 +1,39 @@
+<form action="/edit/update" method="post" id="IdAddForm" >
+    <input type="hidden" value="{{this.id}}" name="id">
+    <input type="hidden" value="{{this.jsonName}}" name="jsonName">
+    <div class="form-group">
+        <label class="form-label mt-4">Url</label>
+        <input type="text" class="form-control" id="idUrl" name="url" value="{{this.url}}">
+    </div>
+
+    <div class="form-group">
+        <label class="form-label mt-4">Nombre</label>
+        <input type="text" class="form-control" id="Idnombre" name="nombre" value="{{this.nombre}}">
+    </div>
+
+    <div class="form-group margen">
+        <label for="Desc" for="formfile">Descripcion</label>
+        <textarea class="form-control txtbox" id="id_desc" name="descrip" type="text">{{this.descrip}}</textarea>
+    </div> 
+
+    <div class="form-group">
+        <label class="form-label mt-4">Tipo</label>
+        <input type="text" class="form-control" id="idtipo" name="tipo" value="{{this.tipo}}">
+    </div>
+
+    <div class="form-group">
+        <label class="form-label mt-4">Subtipo</label>
+        <input type="text" class="form-control" id="idSubtipo" name="subtipo" value="{{this.Subtipo}}">
+    </div>
+
+    <div class="form-group">
+        <label class="form-label mt-4">Imagen local</label>
+        <input type="text" class="form-control" id="idlimag" name="limag" value="{{this.limag}}">
+    </div>
+
+    <div class="form-group">
+        <label class="form-label mt-4">Link de imagen</label>
+        <input type="text" class="form-control" id="idpimag" name="pimag" value="{{this.pimag}}">
+    </div>
+        <button type="submit" class="btn btn-success gran margen">Actulizar Datos</button>
+</form>

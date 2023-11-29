@@ -6,7 +6,7 @@
 - Nombre 
 - Descripcion
 - Tipo (Yt, Git Hub)
-- Subtipo(Proramacion,Sv,Historia)
+- Subtipo(Proramacion,Sv,Historia)(En la Db es el nombre del id)
 - Imagen Local
 - Imagen Url 
 
