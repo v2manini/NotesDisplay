@@ -36,6 +36,7 @@ app.use(require('./Routers/AddLinks'));
 app.use(require('./Routers/Viewlink'));
 app.use(require('./Routers/ViewlinkDb'));
 app.use(require('./Routers/eddit'));
+app.use(require('./Routers/delete'));
 app.use(require('./Routers/x-Errors'));
 
 

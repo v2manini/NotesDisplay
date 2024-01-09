@@ -49,14 +49,18 @@ router.get('/edit/json/:jsonname/:id', async function (req, res) {
 
 
 router.post('/edit/update', async function (req, res) {
+    let link;
     if (req.body.jsonName.length > 2) {
         updateJson(req);
+        link = "/view";
     } else {
         await Mysql.Realizar_Query(`update NotesUrl set url = "${req.body.url}",nombre = "${req.body.nombre}",descrip = "${req.body.descrip}",
         tipo = "${req.body.tipo}",Subtipo = "${req.body.subtipo}",limag = "${req.body.limag}" ,pimag = "${req.body.pimag}"
         where id = ${req.body.id};`);  
+        link = "/viewdb";
     }
-    res.redirect("/view");
+    res.redirect(link);
+
 });
 
 

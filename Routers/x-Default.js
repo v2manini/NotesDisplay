@@ -13,4 +13,8 @@ router.get('/viewdb',  function (req, res) {
     res.render("viewdb")
 });
 
+router.get('/viewpb',  function (req, res) {
+    res.render("viewAll")
+});
+
 module.exports = router;

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index"
+    "dev":"start http://localhost:3000 && node index",
+    "start":"nodemon index",
+    "deploy":"start ./json/DB/pocketbase.exe serve && start http://localhost:3000  && nodemon index"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +18,6 @@
     "express-handlebars": "^6.0.6",
     "metadata-scraper": "^0.2.60",
     "mysql2": "^2.3.3",
-    "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.6"
+    "pocketbase": "^0.20.1"
   }
 }

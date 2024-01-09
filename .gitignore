@@ -6,3 +6,5 @@ node_modules
 *ps1
 *.bat
 *.db
+json/DB
+*lnk
