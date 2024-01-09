@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev":"start http://localhost:3000 && node index",
-    "start":"nodemon index",
-    "deploy":"start ./json/DB/pocketbase.exe serve && start http://localhost:3000  && nodemon index"
+    "dev": "start http://localhost:3000 && node index",
+    "start": "nodemon index",
+    "deploy": "start ./json/DB/pocketbase.exe serve && start http://localhost:3000  && nodemon index"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +17,6 @@
     "express": "^4.18.1",
     "express-handlebars": "^6.0.6",
     "metadata-scraper": "^0.2.60",
-    "mysql2": "^2.3.3",
-    "pocketbase": "^0.20.1"
+    "mysql2": "^2.3.3"
   }
 }

@@ -33,7 +33,6 @@ app.listen( Listen_Port, function () {
 
 app.use(require('./Routers/x-Default'));
 app.use(require('./Routers/AddLinks'));
-app.use(require('./Routers/Viewlink'));
 app.use(require('./Routers/ViewlinkDb'));
 app.use(require('./Routers/eddit'));
 app.use(require('./Routers/delete'));
