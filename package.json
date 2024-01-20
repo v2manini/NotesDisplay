@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "start http://localhost:3000 && node index",
-    "start": "nodemon index",
-    "deploy": "start ./json/DB/pocketbase.exe serve && start http://localhost:3000  && nodemon index"
+    "start": "start http://localhost:3000  && nodemon index"
   },
   "keywords": [],
   "author": "",

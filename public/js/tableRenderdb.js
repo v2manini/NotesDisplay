@@ -14,6 +14,8 @@ function selecActDb() {
     let selec = document.getElementById("Idselecdb").value;
     if(selec == optionsDefaul) return;
 
+    if(document.getElementById("idnombdato")) return document.getElementById("idnombdato").value  = selec;
+    
     ajaxPost("/getdatadb", {selec}, function(data){ 
         data = JSON.parse(data);
         DataJsonGloabla = data;

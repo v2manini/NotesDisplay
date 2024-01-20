@@ -2,10 +2,10 @@ const { Router}= require('express');
 const router = Router();
 const Mysql = require("../modules/mysql");
 
-router.get('/deltedb/:id', async function (req, res) {
-    console.log('/deltedb/',req.params.id)
-    await Mysql.Realizar_Query(`delete from NotesUrl where id = ${req.params.id};`);   
-    res.redirect("/viewdb")
+router.post('/deltedb', async function (req, res) {
+    await Mysql.Realizar_Query(`delete from NotesUrl where id = ${req.body.id};`);   
+    console.log(`delete from NotesUrl where id = ${req.body.id};`);
+    res.send("Se ha borrado correctamente");
 });
 
 module.exports = router;

@@ -4,20 +4,25 @@ async function geturldata(urls) {
     let ArraAux = [];
     let Urldata ;
     let idNum = 0;
-
+try {  
     for (let i = 0; i < urls.length; i++) {
+        if (!urls[i].startsWith("http")) return;
+         
         if (urls[i].endsWith("jpg")|| urls[i].endsWith("jpeg") || urls[i].endsWith("png") || urls[i].endsWith("webp") || urls[i].endsWith("gif")) {
             Urldata = await getMetaData(urls[i]);
             ArraAux.push(getObje(idNum,urls[i],"Imagen/Pintura","",Urldata.provider,"","Ninguna",urls[i])); // Urldata.provider usar el urls[i]
             idNum++;
         } else {
             Urldata = await getMetaData(urls[i]);
-            //console.log(Urldata);           
+            //console.log(Urldata); 
+            if (!Urldata.description) Urldata.description = "Ninguna"; 
            ArraAux.push(getObje(idNum,Urldata.url,Urldata.title,Urldata.description.slice(0,500),Urldata.provider,"","Ninguna",Urldata.image));
            idNum++;
         }
+        console.log("Se completado el url num ",i)
     }
     return ArraAux;
+} catch (error) {console.log("Error del geturldata ",error)}
 }
 
 // async function getSubdata(urls,idNum) {  // para futuro

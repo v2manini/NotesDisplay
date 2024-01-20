@@ -1,5 +1,3 @@
-<div id="IdErrorAlert"></div>
-
 <form action="/add" method="post" id="IdAddForm" >
       <div class="form-group margen">
           <label for="Artículo" for="formfile">Tipo de Guardado</label>
@@ -9,7 +7,10 @@
       </div> 
       <div class="form-group">
         <label class="form-label mt-4">Nombre del Subtipo</label>
-        <input type="text" class="form-control" id="idnombdato" name="nombre" placeholder="Ingresar el nombre">
+        <div class="nombdatoContainer">
+          <input type="text" class="form-control" id="idnombdato" name="nombre" placeholder="Ingresar el nombre">
+          <select name="Selec" onchange="selecActDb()" id="Idselecdb" class="form-select" aria-label="Default select example"></select>
+        </div>
       </div>
         <div class="form-group margen">
             <label for="Artículo" for="formfile">Los links</label>

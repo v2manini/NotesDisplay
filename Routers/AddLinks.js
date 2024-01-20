@@ -8,20 +8,12 @@ router.post('/add', async function (req, res) {
     nombre.replace(/\s/g, '');
 
     let data = req.body.txtbox;
-    let page = "";
 
     data = data.trim().split(/\s+/);
-    try{
-        data = await geturldata(data);// Busco los datos para guardalos en la db
-        switch (req.body.Selec) {
-            case "data-base":
-                mysql_Upload(data,nombre);
-                page = "/viewdb";
-            break;
-        }
-    }catch (error) {console.log(error);}
+    data = await geturldata(data);// Busco los datos para guardalos en la db
+    await mysql_Upload(data,nombre);
 
-    res.redirect(page);//Inicio
+    res.redirect("/viewdb");//Inicio
 });
 
 module.exports = router;

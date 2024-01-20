@@ -7,7 +7,7 @@ router.post('/getjsondb', async function (req, res) {
     let data;
     let newdata;
 
-    data = await Mysql.Realizar_Query(`select distinct subtipo from NotesUrl;`); 
+    data = await Mysql.Realizar_Query(`select distinct subtipo from NotesUrl ORDER BY subtipo DESC;`); 
         // console.log("Data = ", data)
     newdata = data.map(function (Valvue) {
             return  Valvue.subtipo;
@@ -20,7 +20,7 @@ router.post('/getjsondb', async function (req, res) {
 
 
 router.post('/getdatadb', async function (req, res) {
-    let data = await Mysql.Realizar_Query(`select * from NotesUrl where subtipo = "${req.body.selec}";`); 
+    let data = await Mysql.Realizar_Query(`select * from NotesUrl where subtipo = "${req.body.selec}" ORDER BY id DESC;`); 
     res.send(data);
 });
 

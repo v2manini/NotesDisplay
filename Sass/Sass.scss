@@ -1,8 +1,8 @@
-$backgroundColor : #E5E0DB;
-$headercolor : rgb(219, 138, 138);
-$maincolor:  rgb(138, 200, 219);
-$footercolor :  rgb(203, 138, 219);
-$datacolor : #ffff;
+$backgroundColor : #0d1117;  //#E5E0DB
+$headercolor : rgb(219, 138, 138); //rgb(219, 138, 138)
+$maincolor:  rgb(138, 200, 219); //rgb(138, 200, 219)
+$footercolor :  rgb(203, 138, 219);//rgb(203, 138, 219)
+$datacolor : #ffff; //#ffff;
 $headerheight: 10%;
 $txtboxheight: 200px;
 // $formmargin: 1%;
@@ -10,8 +10,9 @@ $formmargin: 1% 0 1% 0;
 $buttonsize : 1.2rem;
 $borde : 25px;
 $padd : 10px;
-$imagen: 126px;
-$subcont : 0px 10px 0px 10px;
+$imagen: 200px; // Imagenes 
+$subcont : 1%; //0px 10px 0px 10px;
+$widhtDataContainer: 400px; // Ancho de los contenedores de informacion 
 
 body{
     background-color: $backgroundColor;
@@ -61,6 +62,9 @@ main{
     margin: 0 5vh 0 5vh ;
     height: 100vh;
 }
+.nombdatoContainer { /*Contenedor del inicio con el nombre del subtipo  */ 
+    display: flex;
+}
 
 footer {
     background-color:$footercolor;
@@ -70,18 +74,43 @@ footer {
 .dataconteiner {
     display: flex;
     align-items: center;
+    justify-content: center;
+    // flex-direction: column;
+    flex-wrap: wrap;
     background-color: $datacolor;
     padding: $padd;
     border-radius: $borde;
     margin-bottom: $padd;
+    width: $widhtDataContainer;
     img{
         height: $imagen;
         border-radius: $borde;
+        object-fit: cover;
+        width: 100%;
     }
     h1{
         font-size: 1.7rem;
     }
 }
 .subcontainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     padding: $subcont;
+}
+
+#IdResult {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+@media (max-width: 1782px) {
+    #IdResult {
+        grid-template-columns: none;
+        grid-gap: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }

@@ -1,6 +1,7 @@
 const { Router}= require('express');
 const router = Router();
 const Mysql = require("../modules/mysql");
+let {ParseQuery} = require("../modules/utils/parseSql");
 
 
 router.get('/edit/:id', async function (req, res) {
@@ -20,10 +21,15 @@ router.get('/edit/:id', async function (req, res) {
 });
 
 
+router.post('/edit/subtipo', async function (req, res) {
+    await Mysql.Realizar_Query(`update NotesUrl set Subtipo = "${ParseQuery(req.body.Subtipo)}"where id = ${req.body.id};`);
+    res.send("Se ha acutalizado");
+});
+
 router.post('/edit/update', async function (req, res) {
-    await Mysql.Realizar_Query(`update NotesUrl set url = "${req.body.url}",nombre = "${req.body.nombre}",descrip = "${req.body.descrip}",
-    tipo = "${req.body.tipo}",Subtipo = "${req.body.subtipo}",limag = "${req.body.limag}" ,pimag = "${req.body.pimag}"
-    where id = ${req.body.id};`);  
+    await Mysql.Realizar_Query(`update NotesUrl set url = "${req.body.url}",nombre = "${ParseQuery(req.body.nombre)}",
+    descrip = "${ParseQuery(req.body.descrip)}",tipo = "${ParseQuery(req.body.tipo)}",Subtipo = "${ParseQuery(req.body.subtipo)}",
+    limag = "${req.body.limag}" ,pimag = "${req.body.pimag}"where id = ${req.body.id};`);  
     res.redirect("/viewdb");
 });
 module.exports = router;
