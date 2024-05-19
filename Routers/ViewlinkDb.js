@@ -24,4 +24,9 @@ router.post('/getdatadb', async function (req, res) {
     res.send(data);
 });
 
+router.post('/getall', async function (req, res) {
+    let data = await Mysql.Realizar_Query(`select * from NotesUrl ORDER BY id DESC;`); 
+    res.send(data);
+});
+
 module.exports = router;

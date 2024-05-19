@@ -1,4 +1,5 @@
 const getMetaData = require('metadata-scraper');
+const {GetYtInfo} = require("./Yt_api");
 
 async function geturldata(urls) { 
     try {  
@@ -11,6 +12,7 @@ async function getDataFromUrl(urls) {  // para futuro
     let ArraAux = [];
     let Urldata ;
     let objMetaScap;
+    let objFinal;
 
     for (let i = 0; i < urls.length; i++) {
         if (!urls[i].startsWith("http")) return;
@@ -22,30 +24,33 @@ async function getDataFromUrl(urls) {  // para futuro
         // Si el url es una imagen
         if (urls[i].endsWith("jpg")|| urls[i].endsWith("jpeg") || urls[i].endsWith("png") || urls[i].endsWith("webp") || urls[i].endsWith("gif")) {
             Urldata = await getMetaData(objMetaScap);
-            ArraAux.push(getObje(idNum,urls[i],"Imagen/Pintura","",Urldata.provider,"","Ninguna",urls[i])); // Urldata.provider usar el urls[i]
-            idNum++;
-        // }if (urls[i].startsWith("https://youtu.be")|| urls[i].startsWith("https://www.youtube")) { // Si el url es de YT
-        //     console.log("Video de YT ");
+            objFinal = getObje(urls[i],"","Imaen/Pintura",Urldata.provider,"Ninguna",urls[i]);
 
-        }else {
+        }else  if (urls[i].startsWith("https://youtu.be")|| urls[i].startsWith("https://www.youtube")) { // Si el url es de YT
+            let ytData = await GetYtInfo(urls[i]);
+            objFinal = getObje(ytData.url,ytData.title,ytData.description.slice(0,500),"YouTube","Ninguna",ytData.image);
+
+        }else{
             Urldata = await getMetaData(objMetaScap);
             if (!Urldata.description) Urldata.description = "Ninguna"; 
-        
-           ArraAux.push(getObje(Urldata.url,Urldata.title,Urldata.description.slice(0,500),Urldata.provider,"","Ninguna",Urldata.image));
+            objFinal = getObje(Urldata.url,Urldata.title,Urldata.description.slice(0,500),Urldata.provider,"Ninguna",Urldata.image);
         };
-        console.log("Se completado el url num ",i+1)
+
+        
+        ArraAux.push(objFinal);
+        console.log("Se completado el url num ",i+1, " ",objFinal.url);
     };
     console.log("\n");
     return ArraAux;
 };
 
-function getObje(url,title,description,provider,Subtipo,limag,pimag) {
+function getObje(url,title,description,provider,limag,pimag) {
     Objs =  {
         url : url,
         nombre : title || url,
         descrip : description,
         tipo : provider,
-        Subtipo: Subtipo,
+        //Subtipo: Subtipo,
         limag : limag,
         pimag : pimag
     };

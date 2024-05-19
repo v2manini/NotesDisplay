@@ -1,7 +1,7 @@
 const { Router}= require('express');
 const router = Router();
 const Mysql = require("../modules/mysql");
-let {ParseQuery} = require("../modules/utils/parseSql");
+let {ParseQuery,ParseQuerytoData} = require("../modules/utils/parseSql");
 
 
 router.get('/edit/:id', async function (req, res) {
@@ -11,7 +11,7 @@ router.get('/edit/:id', async function (req, res) {
         id : data[0].id,
         url : data[0].url,
         nombre : data[0].nombre,
-        descrip : data[0].descrip,
+        descrip : ParseQuerytoData(data[0].descrip),
         tipo : data[0].tipo,
         Subtipo : data[0].Subtipo,
         limag : data[0].limag,

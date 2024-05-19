@@ -6,10 +6,10 @@ async function mysql_Upload(data,nombre) {
     await data.forEach( async data => {
         await Mysql.Realizar_Query(`insert into NotesUrl (url, nombre, descrip, tipo, subtipo,limag,pimag) values 
         ("${data.url}","${ParseQuery(data.nombre)}","${ParseQuery(data.descrip)}","${ParseQuery(data.tipo)}",
-        "${ParseQuery(nombre)}","${data.limag}","${data.pimag}");`);  
+        "${nombre}","${data.limag}","${data.pimag}");`);  
     });
 };
 
-
+//Falta parcear el nombre
 
 module.exports = {mysql_Upload}
