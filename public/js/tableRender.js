@@ -15,9 +15,11 @@ function tablefill(data,jsonfilename) { // Crea la tabla con los datos
                     <h5>Tipo: ${data[i].tipo}</h5>
                     <h6>Subtipo: ${data[i].Subtipo}</h6>
                 </div>
-                <a type="button" class="btn btn-warning margen" href="/edit/${jsonUrl}${data[i].id}">Editar</a>
-                <a type="button" onclick="deleteLink(${data[i].id})" class="btn btn-danger margen">Borrar</a>
-                <a type="button" onclick="quickEdit(${data[i].id})" class="btn btn-success margen">Edit sub</a>
+                <div class="btnContainer">
+                    <a type="button" class="btn btn-warning margen" href="/edit/${jsonUrl}${data[i].id}">Editar</a>
+                    <a type="button" onclick="deleteLink(${data[i].id})" class="btn btn-danger margen">Borrar</a>
+                    <a type="button" onclick="quickEdit(${data[i].id})" class="btn btn-success margen">Edit sub</a>
+                </div>
         </div>
         `;
     }

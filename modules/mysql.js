@@ -5,7 +5,7 @@ require("dotenv").config(); // Asegurar token
 //var MySQL = require('./modulos/mysql'); //Añado el archivo mysql.js presente en la carpeta módulos
 //let notDeportes = await MySQL.Realizar_Query("select * from textos where categoria = 'Deporte';");
 
-var SQL_Config_Data =
+const SQL_Config_Data =
 {
 	host: process.env.MYSQL_HOST,
 	user: process.env.MYSQL_USER,
@@ -15,13 +15,14 @@ var SQL_Config_Data =
 	charset: 'utf8mb4'
 }
 
-async function Realizar_Query(query){
+async function Realizar_Query(query,params){
 	var String_A_Devolver;
 	var connection;
 	try
 	{
 		connection = await mysql.createConnection(SQL_Config_Data);
-		String_A_Devolver = await connection.execute(query);
+		//String_A_Devolver = await connection.execute(query); //https://stackoverflow.com/questions/53197922/difference-between-query-and-execute-in-mysql
+		String_A_Devolver = await connection.query(query,params);
 	}
 	catch(err)
 	{

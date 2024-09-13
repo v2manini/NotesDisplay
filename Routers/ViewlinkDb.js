@@ -20,7 +20,9 @@ router.post('/getjsondb', async function (req, res) {
 
 
 router.post('/getdatadb', async function (req, res) {
-    let data = await Mysql.Realizar_Query(`select * from NotesUrl where subtipo = "${req.body.selec}" ORDER BY id DESC;`); 
+    //let data = await Mysql.Realizar_Query(`select * from NotesUrl where subtipo = "${req.body.selec}" ORDER BY id DESC;`); 
+    let data = await Mysql.Realizar_Query(`select * from NotesUrl where subtipo = ? ORDER BY id DESC;`,[req.body.selec]); 
+
     res.send(data);
 });
 
