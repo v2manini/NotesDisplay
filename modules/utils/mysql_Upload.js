@@ -1,5 +1,5 @@
 const Mysql = require("../../modules/mysql");
-let {ParseQuery} = require("../../modules/utils/parseSql");
+// let {ParseQuery} = require("../../modules/utils/parseSql");
 
 async function mysql_Upload(data,nombre) {
     if (!data) return; 
