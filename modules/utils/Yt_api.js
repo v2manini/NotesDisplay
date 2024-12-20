@@ -3,20 +3,39 @@ require("dotenv").config(); // Asegurar token
 async function GetYtInfo(url){
     let objaux;
     let res; 
+    let title,descrip,imag;
 
-    let idurl = youtube_parser(url);
+    try {
+        
+    if (url.includes("@")) {
+        title = "Canal de " + url.split('@')[1];
+        descrip = "";
+        imag ="";
 
-    res =  await fetch(`https://www.googleapis.com/youtube/v3/videos?key=${process.env.YT_API}&id=${idurl}&part=snippet`);
-    res = await res.json();
+    } else {
+        let idurl = youtube_parser(url);
 
-    objaux  =  {
-        url : url,
-        title : res.items[0].snippet.title || url,
-        description : res.items[0].snippet.description,
-        image : res.items[0].snippet.thumbnails.high.url,
+        res =  await fetch(`https://www.googleapis.com/youtube/v3/videos?key=${process.env.YT_API}&id=${idurl}&part=snippet`);
+        res = await res.json();
+        
+        title   = res.items[0].snippet.title;
+        descrip = res.items[0].snippet.description;
+        imag   = res.items[0].snippet.thumbnails.high.url;
+    }
+
+    } catch (error) {
+        console.log(error);
+    } finally {
+
+        objaux  =  {
+            url : url,
+            title : title || url,
+            description : descrip,
+            image : imag,
+        };
+
+        return objaux; 
     };
-
-    return objaux; 
 };
 
 function youtube_parser(url){ //https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-video-id-from-a-url 

@@ -8,7 +8,7 @@ function tablefill(data,jsonfilename) { // Crea la tabla con los datos
     for (let i = 0; i < data.length; i++) {
         table += `
         <div class="dataconteiner" id="cuadro_${data[i].id}">
-            <img loading="lazy" src= ${data[i].pimag} alt="" srcset="">
+            <img id="id_img_${i}" loading="lazy" src= "${data[i].pimag}" alt="" srcset="" onerror="ImgLoadingError(${i})">
                 <div class="subcontainer">
                     <h1><a target="_blank" href=${data[i].url}>${data[i].nombre}</a></h1>
                     <p>${data[i].descrip}</p>           
