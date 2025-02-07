@@ -9,7 +9,7 @@ $txtboxheight: 200px;
 $formmargin: 1% 0 1% 0;
 $buttonsize : 1.2rem;
 $borde : 25px;
-$padd : 10px;
+$padd : 0.625rem;
 $imagen: 200px; // Imagenes 
 $subcont : 1%; //0px 10px 0px 10px;
 $widhtDataContainer: 25rem; // Ancho de los contenedores de informacion 
@@ -100,6 +100,15 @@ footer {
     flex-direction: column;
     width: 100%;
     padding: $subcont;
+    p { // añadir el salto de linea en el <p>
+        white-space: break-spaces;
+        max-height: 12rem;
+        overflow: hidden scroll;
+        margin: 2%;
+        overflow: hidden scroll;
+        scrollbar-width: thin;
+        padding: 1rem;
+    }
 }
 
 #IdResult {
