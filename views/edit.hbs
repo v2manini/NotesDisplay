@@ -1,4 +1,4 @@
-<form action="/edit/update" method="post" id="IdAddForm" >
+<form action="/edit/update" method="post" id="IdAddForm" enctype="multipart/form-data">
     <input type="hidden" value="{{this.id}}" name="id">
     <input type="hidden" value="{{this.jsonName}}" name="jsonName">
     <div class="form-group">
@@ -28,7 +28,10 @@
 
     <div class="form-group">
         <label class="form-label mt-4">Imagen local</label>
-        <input type="text" class="form-control" id="idlimag" name="limag" value="{{this.limag}}">
+        <div class="Combine">
+            <input type="text" class="form-control" id="idlimag" name="limag" value="{{this.limag}}">    
+            <input type="file" class="form-control" name="miniatura">
+        </div>
     </div>
 
     <div class="form-group">

@@ -2,7 +2,8 @@ const { Router}= require('express');
 const router = Router();
 const Mysql = require("../modules/mysql");
 let {ParseQuery,ParseQuerytoData} = require("../modules/utils/parseSql");
-
+require("dotenv").config();
+const {upload} = require("../modules/multer");
 
 router.get('/edit/:id', async function (req, res) {
     let data = await Mysql.Realizar_Query(`select * from NotesUrl where id = ?;`,[req.params.id]); 
@@ -26,7 +27,9 @@ router.post('/edit/subtipo', async function (req, res) {
     res.send("Se ha acutalizado");
 });
 
-router.post('/edit/update', async function (req, res) {
+router.post('/edit/update',upload.single("miniatura"),async function (req, res) {
+    if(req.file) req.body.limag = process.env.IMG_PATH + req.file.filename; //console.log(req.file);
+    
     await Mysql.Realizar_Query(`update NotesUrl set url = ? ,nombre = ?,
     descrip = ?,tipo = ?,Subtipo = ?,limag = ? ,pimag = ? where id = ?;`,[req.body.url,req.body.nombre,
     req.body.descrip,req.body.tipo,req.body.subtipo,req.body.limag,req.body.pimag,req.body.id]);  
