@@ -6,6 +6,7 @@ function tablefill(data,jsonfilename) { // Crea la tabla con los datos
     if(jsonfilename) jsonUrl = `json/${jsonfilename}/`; 
 
     for (let i = 0; i < data.length; i++) {
+        if (!data[i].pimag) data[i].pimag = data[i].limag; //Cambia la image a la local
         table += `
         <div class="dataconteiner" id="cuadro_${data[i].id}">
             <img id="id_img_${i}" loading="lazy" src= "${data[i].pimag}" alt="" srcset="" onerror="ImgLoadingError(${i})">

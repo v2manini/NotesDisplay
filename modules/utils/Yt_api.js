@@ -24,14 +24,15 @@ async function GetYtInfo(url){
     }
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
+        console.log("Info :",res.items[0].snippet.title,res.items[0].snippet.description,res.items[0].snippet.thumbnails.high.url);
     } finally {
 
         objaux  =  {
             url : url,
             title : title || url,
-            description : descrip,
-            image : imag,
+            description : descrip || "Ninguna" ,
+            image : imag ||  "" ,
         };
 
         return objaux; 

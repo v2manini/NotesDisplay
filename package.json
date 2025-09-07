@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "start node index && start http://localhost:3000",
-    "start": "start http://localhost:3000  && nodemon index"
+    "dev": "node index",
+    "start": "start http://localhost:3000  && nodemon index",
+    "scss": "sass --watch --style=compressed ./Sass/Sass.scss ./public/css/Sass.css"
   },
   "keywords": [],
   "author": "",
